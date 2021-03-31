@@ -45,7 +45,7 @@ public:
 
   /**
    * @brief  初始化Wire，并且对传感器进行软件复位
-  */
+   */
   void begin();
 
 private:

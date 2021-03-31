@@ -111,7 +111,7 @@ public:
    */
    bool getTandRHRawData(uint16_t *temp,uint16_t *hum);
 
-  
+protected:
   /**
    * @brief  将从传感器获得的数据进行再次校验比对，判断从传感器获得的数据是否正确
    * @param  data1  High 8 bits to check value

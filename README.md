@@ -40,7 +40,7 @@ To use this library, download the library file first, paste it into the \Arduino
 
 ```C++
   /**
-   * @brief  初始化设备
+   * @brief  对主控板的IIC进行了初始化
    */
   void begin();
 
@@ -55,45 +55,64 @@ To use this library, download the library file first, paste it into the \Arduino
    * @return 湿度值，单位：%RH
    */
   float getHumidity();
+
   /**
-   * @brief  获取湿度数据
+   * @brief  获取温湿度数据
    * @param   tem  存放温度数据的引用
    * @param   hum  存放湿度数据的引用
    */
   void  getTemHum(float &tem , float &hum);
-  
-  /**
-   * @brief  获取传感器的唯一标识符
-   * @param  id  这里作为引用传参，将会将读取到的唯一设备标识符赋值给参数"id"
-   * @return 传感器的唯一标识符
-   */
-  virtual bool getDeviceID(uint32_t &id)=0;
 
   /**
-   * @brief  set the operating mode of the sensor
-   * @param  mode  The operating mode of the sensor
+   * @brief  设置传感器工作模式
+   * @param  mode  传感器的工作模式
+   * @n            SHTC3：
+   * @n                    eEnClkStretch                              Clock Stretching Enabled 
+   * @n                    eDisClkStretch                             Clock Stretching Disabled 
+   * @n                    eEnClkStretchLowP                          Clock Stretching Enabled & Low Power
+   * @n                    eDisClkStretchLowP                         Clock Stretching Disabled & Low Power
+   * @n            SHT40:
+   * @n                    eHighPrecision                             measure T & RH with high precision (high repeatability) 
+   * @n                    eMediumPrecision                           measure T & RH with medium precision (medium repeatability)
+   * @n                    eLowPrecision                              measure T & RH with lowest precision (low repeatability) 
+   * @n                    eHeaterHighPLongT                          activate highest heater power & high precis. meas. (typ. 200mW @ 3.3V) for 1s 
+   * @n                    eHeaterHighPShortT                         activate highest heater power & high precis. meas. (typ. 200mW @ 3.3V) for 0.1s
+   * @n                    eHeaterMediumPLongT                        activate medium heater power  & high precis. meas. (typ. 110mW @ 3.3V) for 1s 
+   * @n                    eHeaterMediumPShortT                       activate medium heater power  & high precis. meas. (typ. 110mW @ 3.3V) for 0.1s 
+   * @n                    eHeaterLowPLongT                           activate lowest heater power  & high precis. meas. (typ. 20mW @ 3.3V) for 1s 
+   * @n                    eHeaterLowPShortT                          activate lowest heater power  & high precis. meas. (typ. 20mW @ 3.3V) for 0.1s 
    */
-  virtual void setMode(uint8_t mode) = 0;
+   void setMode(uint16_t mode) ;
+
+  /**
+   * @brief  获取传感器的唯一标识符
+   * @return 获取成功返回传感器的唯一标识符，失败返回0
+   */
+   uint32_t getDeviceID();
+
+  /**
+   * @brief  software reset
+   */
+   void softwareReset() ;
+
+  /**
+   * @brief  Obtain raw data of temperature and humidity
+   * @param  temp Pointer to the address of the original value of the temperature
+   * @param  hun   Pointer to the address of the original value of the humidity
+   * @return Is the data obtained correct? return true  The data is correct ; return false  The data  is incorrect
+   */
+   bool getTandRHRawData(uint16_t *temp,uint16_t *hum);
 ```
 
 ## Methods—DFRobot_SHTC3
 
 ```C++
   /**
-   * @brief  初始化传感器
-   * @return Whether the device is on or not. return true succeed ;return false failed.
+   * @brief  初始化Wire，并且对传感器进行软件复位，然后使传感器进入睡眠状态，需要使用时，在对其进行唤醒。
    */
   void begin();
 
-  /**
-   * @brief  set the operating mode of the sensor
-   * @param  mode  The operating mode of the sensor
-   *               eEnClkStretch                     Clock Stretching Enabled
-   *               eDisClkStretch                    Clock Stretching Disabled
-   *               eEnClkStretchLowP                 Clock Stretching Enabled & Low Power
-   *               eDisClkStretchLowP                Clock Stretching Disabled & Low Power
-   */
-  void setMode(uint8_t mode = eEnClkStretch);
+
 
   /**
    * @brief  当传感器处于睡眠模式时，在进行任何进一步的通信之前，需要唤醒
@@ -101,47 +120,18 @@ To use this library, download the library file first, paste it into the \Arduino
   void wakeup();
   
   /**
-   * @brief  当VDD达到the power-up voltage level时，SHTC3在230µs的持续时间后进入空闲状态。 在此之后，必须使用将传感器设置为睡眠模式。
+   * @brief  设置传感器为睡眠模式，设置后，在未唤醒前无法进行数据采集
    */
   void sleep();
-
-  /**
-   * @brief  获取传感器的唯一标识符
-   * @param  id  这里作为引用传参，将会将读取到的唯一设备标识符赋值给参数"id"
-   * @return 传感器的唯一标识符
-   */
-  bool getDeviceID(uint32_t &id);
 ```
 
 ## Methods—DFRobot_SHT40
 
 ```C++
   /**
-   * @brief  初始化传感器
-  */
+   * @brief  初始化Wire，并且对传感器进行软件复位
+   */
   void begin();
-
-  /**
-   * @brief  获取传感器的唯一标识符
-   * @param  id  这里作为引用传参，将会将读取到的唯一设备标识符赋值给参数"id"
-   * @return 传感器的唯一标识符
-   */
-  bool getDeviceID(uint32_t &id);
-  
-  /**
-   * @brief  set the operating mode of the sensor
-   * @param  mode  The operating mode of the sensor
-   *               eHighPrecision           measure T & RH with high precision (high repeatability)
-   *               eMediumPrecision         measure T & RH with medium precision (medium repeatability)
-   *               eLowPrecision            measure T & RH with lowest precision (low repeatability)
-   *               eHeaterHighPLongT        activate highest heater power & high precis. meas. (typ. 200mW @ 3.3V) for 1s
-   *               eHeaterHighPShortT       activate highest heater power & high precis. meas. (typ. 200mW @ 3.3V) for 0.1s
-   *               eHeaterMediumPLongT      activate medium heater power  & high precis. meas. (typ. 110mW @ 3.3V) for 1s
-   *               eHeaterMediumPShortT     activate medium heater power  & high precis. meas. (typ. 110mW @ 3.3V) for 0.1s
-   *               eHeaterLowPLongT         activate lowest heater power  & high precis. meas. (typ. 20mW @ 3.3V) for 1s
-   *               eHeaterLowPShortT        activate lowest heater power  & high precis. meas. (typ. 20mW @ 3.3V) for 0.1s
-   */
-  void setMode(uint8_t mode=eHighPrecision);
 ```
 
 
