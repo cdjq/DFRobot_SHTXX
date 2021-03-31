@@ -1,0 +1,42 @@
+#######################################
+# Syntax Coloring Map 
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+DFRobot_SHTXX	KEYWORD1
+DFRobot_SHTC3	KEYWORD1
+DFRobot_SHT40	KEYWORD1
+
+#######################################
+# Methods and Functions  (KEYWORD2)
+#######################################
+
+begin	KEYWORD2
+getTemperature	KEYWORD2
+getHumidity	KEYWORD2
+getTemHum	KEYWORD2
+getDeviceID	KEYWORD2
+setMode	KEYWORD2
+wakeup	KEYWORD2
+sleep	KEYWORD2
+#######################################
+# Constants   (LITERAL1)
+#######################################
+eEnClkStretch	LITERAL1
+eDisClkStretch	LITERAL1
+eEnClkStretchLowP	LITERAL1
+eDisClkStretchLowP	LITERAL1
+eHighPrecision	LITERAL1
+eMediumPrecision	LITERAL1
+eLowPrecision	LITERAL1
+eHeaterHighPLongT	LITERAL1
+eHeaterHighPShortT	LITERAL1
+eHeaterMediumPLongT	LITERAL1
+eHeaterMediumPShortT	LITERAL1
+eHeaterLowPLongT	LITERAL1
+eHeaterLowPShortT	LITERAL1
+SHT40_AD1B_IIC_ADDR	LITERAL1
+SHT40_BD1B_IIC_ADDR	LITERAL1
+
