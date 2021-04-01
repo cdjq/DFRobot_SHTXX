@@ -1,11 +1,12 @@
 /*!
- * @file DFRobot_SHTXX.h
+ * @file DFRobot_SHT40.h
  * @brief 定义了DFRobot_SHT40的类
  * @copyright Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
  * @licence The MIT License (MIT)
  * @author [yangfeng]<feng.yang@dfrobot.com>
  * @version V1.0
  * @date 2021-03-19
+ * @get from https://www.dfrobot.com
  * @url  https://github.com/DFRobot/DFRobot_SHTXX
  */
 #ifndef __DFROBOT_SHT40_H__
@@ -41,7 +42,7 @@ public:
    * @brief  constructed function
    * @param  pWire  When instantiate this class, you can specify its twowire
    */
-  DFRobot_SHT40(uint8_t addr,TwoWire *pWire=&Wire);
+  DFRobot_SHT40(uint8_t addr , TwoWire *pWire = &Wire);
 
   /**
    * @brief  初始化Wire，并且对传感器进行软件复位
@@ -54,7 +55,7 @@ private:
    * @param   classPtr  指向子类的指针
    * @param   mode  用户指定的设备工作模式
    */
-  static void setModeCB(void * calssPtr,uint16_t mode);
+  static void setModeCB(void * calssPtr , uint16_t mode);
 
   /**
    * @brief  父类方法softwareReset()对应子类的“类回调函数”，这里用作设置延时

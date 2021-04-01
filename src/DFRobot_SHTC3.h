@@ -1,11 +1,12 @@
 /*!
- * @file DFRobot_SHTXX.h
+ * @file DFRobot_SHTC3.h
  * @brief 定义了DFRobot_SHTC3类
  * @copyright Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
  * @licence The MIT License (MIT)
  * @author [yangfeng]<feng.yang@dfrobot.com>
  * @version V1.0
  * @date 2021-03-19
+ * @get from https://www.dfrobot.com
  * @url  https://github.com/DFRobot/DFRobot_SHTXX
  */
 #ifndef __DFROBOT_SHTC3_H__
@@ -38,7 +39,7 @@ public:
    * @brief  constructed function
    * @param  pWire  When instantiate this class, you can specify its twowire
    */
-  DFRobot_SHTC3(TwoWire *pWire=&Wire);
+  DFRobot_SHTC3(TwoWire *pWire = &Wire);
   
   /**
    * @brief  Destructor

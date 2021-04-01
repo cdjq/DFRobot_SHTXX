@@ -13,32 +13,42 @@
  */
 
 #include"DFRobot_SHTXX.h"
-//DFRobot_SHTC3 SHTXX;
 
-  
+//#define SHTC3
+#ifdef SHTC3
+DFRobot_SHTC3 SHTXX;
+#endif
+
+#define SHT40
+#ifdef SHT40
 /** 对于SHT40传感器这里支持两种型号，第一种是SHT40_AD1B ,第二种是SHT40_BD1B，这两种型号对应不同的IIC设备地址，这里对它们进行了封装，用户可传入如下两种参数
  *   型号为SHT40_AD1B的传感器使用:    SHT40_AD1B_IIC_ADDR
  *   型号为SHT40_AD1B的传感器使用:    SHT40_BD1B_IIC_ADDR
  */
 DFRobot_SHT40 SHTXX(SHT40_AD1B_IIC_ADDR); 
+#endif
 
-uint32_t id=0;
-float Temperature,Humidity;
+uint32_t id = 0;
+float temperature , humidity;
 
 void setup() {
   Serial.begin(9600);
   SHTXX.begin();
-  //SHTXX.wakeup();    /* 如果你选择了SHTC3，请打开这行代码，SHTC3传感器默认配置为睡眠状态，使用前请对它进行唤醒操作 */
-                     /* 使SHTC3 进行睡眠请调用这个方法SHTXX.sleep();在SHTC3传感器进入睡眠状态后，将在被唤醒之前不工作*/
 
-  while((id=SHTXX.getDeviceID()) == 0){
+#ifdef SHTC3
+  SHTXX.wakeup();/*SHTC3传感器默认配置为睡眠状态，使用前请对它进行唤醒操作。 使SHTC3 进行睡眠请调用这个方法SHTXX.sleep();在SHTC3传感器进入睡眠状态后，将在被唤醒之前不工作*/
+#endif
+  
+                     
+
+  while( ( id = SHTXX.getDeviceID() ) == 0){
     Serial.println("ID retrieval error, please check whether the device is connected correctly!!!");
     delay(1000);
   }
 
   delay(1000);
 
-  Serial.print("id :0x");Serial.println(id,HEX);
+  Serial.print("id :0x"); Serial.println(id , HEX);
   /**
    * 
    *    mode 用来配置传感器的工作模式，不同的传感器有不同的工作模式
@@ -63,15 +73,15 @@ void setup() {
 }
 
 void loop() {
-  Temperature =SHTXX.getTemperature();
+  temperature = SHTXX.getTemperature();
 
-  Humidity = SHTXX.getHumidity();
+  humidity = SHTXX.getHumidity();
 
-  //SHTXX.getTemHum(Temperature,Humidity);
+  //SHTXX.getTemHum(temperature,humidity);
 
-  Serial.print("Temperature :");Serial.print(Temperature);;Serial.println(" C");
+  Serial.print("Temperature :"); Serial.print(temperature); Serial.println(" C");
 
-  Serial.print("Humidity :");Serial.print(Humidity);Serial.println(" %RH");
+  Serial.print("Humidity :"); Serial.print(humidity); Serial.println(" %RH");
 
   delay(1000);
 
