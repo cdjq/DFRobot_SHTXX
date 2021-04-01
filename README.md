@@ -61,7 +61,7 @@ To use this library, download the library file first, paste it into the \Arduino
    * @param   tem  存放温度数据的引用
    * @param   hum  存放湿度数据的引用
    */
-  void  getTemHum(float &tem , float &hum);
+  void  getTemHum(float &tem ,float &hum);
 
   /**
    * @brief  设置传感器工作模式
@@ -101,7 +101,7 @@ To use this library, download the library file first, paste it into the \Arduino
    * @param  hun   Pointer to the address of the original value of the humidity
    * @return Is the data obtained correct? return true  The data is correct ; return false  The data  is incorrect
    */
-   bool getTandRHRawData(uint16_t *temp,uint16_t *hum);
+   bool getTandRHRawData(uint16_t *temp ,uint16_t *hum);
 ```
 
 ## Methods—DFRobot_SHTC3
