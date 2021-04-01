@@ -12,13 +12,13 @@
 
 #include "DFRobot_SHT40.h"
 
-DFRobot_SHT40::DFRobot_SHT40(uint8_t addr,TwoWire *pWire):
-DFRobot_SHTXX(addr,pWire,deviceinit,this)
+DFRobot_SHT40::DFRobot_SHT40(uint8_t addr , TwoWire *pWire):
+DFRobot_SHTXX(addr , pWire , deviceinit , this)
 {
-  deviceinit[SHTXX_CONFIG_ID].addr =SHT40_COM_READ_SERIAL;
-  deviceinit[SHTXX_CONFIG_SOFT_RESET].addr =SHT40_COM_SOFT_RESET;
-  deviceinit[SHTXX_CONFIG_MODE].addr =0;
-  deviceinit[SHTXX_CONFIG_ID].len =deviceinit[SHTXX_CONFIG_SOFT_RESET].len=deviceinit[SHTXX_CONFIG_MODE].len = 1;
+  deviceinit[SHTXX_CONFIG_ID].addr = SHT40_COM_READ_SERIAL;
+  deviceinit[SHTXX_CONFIG_SOFT_RESET].addr = SHT40_COM_SOFT_RESET;
+  deviceinit[SHTXX_CONFIG_MODE].addr = 0;
+  deviceinit[SHTXX_CONFIG_ID].len = deviceinit[SHTXX_CONFIG_SOFT_RESET].len = deviceinit[SHTXX_CONFIG_MODE].len = 1;
   deviceinit[SHTXX_CONFIG_ID].fun = (void(*)(...))&DFRobot_SHT40::getDeviceIDCB;
   deviceinit[SHTXX_CONFIG_SOFT_RESET].fun = (void(*)(...))&DFRobot_SHT40::softwareResetCB;
   deviceinit[SHTXX_CONFIG_MODE].fun = (void (*)(...))&DFRobot_SHT40::setModeCB;
@@ -30,7 +30,7 @@ void DFRobot_SHT40::begin()
   softwareReset();
 }
 
-void DFRobot_SHT40::setModeCB(void * calssPtr,uint16_t mode){
+void DFRobot_SHT40::setModeCB(void * calssPtr , uint16_t mode){
   uint16_t time;
   DFRobot_SHT40 * temp = (DFRobot_SHT40 *)calssPtr;
 
