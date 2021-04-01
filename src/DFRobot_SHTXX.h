@@ -17,7 +17,7 @@
 
 
 
-//打开这个宏，可以看到程序的详细运行过程
+//打开这个宏,可以看到程序的详细运行过程
 #define ENABLE_DBG
 
 #ifdef ENABLE_DBG
@@ -38,9 +38,9 @@ typedef struct dev{
 /* 结构体数组的成员数目 */
 #define SHTXX_CONFIG_MAX           3
 
-#define SHTXX_CONFIG_ID            0       //结构体数组的第一位成员，指定为ID相关内容
-#define SHTXX_CONFIG_SOFT_RESET    1       //结构体数组的第二位成员，指定为软件复位相关内容
-#define SHTXX_CONFIG_MODE          2       //结构体数组的第三位成员，指定为设置传感器工作模式相关内容
+#define SHTXX_CONFIG_ID            0       //结构体数组的第一位成员,指定为ID相关内容
+#define SHTXX_CONFIG_SOFT_RESET    1       //结构体数组的第二位成员,指定为软件复位相关内容
+#define SHTXX_CONFIG_MODE          2       //结构体数组的第三位成员,指定为设置传感器工作模式相关内容
 
 /**********************************************************************************************************************/
 
@@ -52,9 +52,9 @@ public:
    * @param  addr   传感器的IIC地址
    * @param  pWire  指向IIC类的指针
    * @param  dev    指向传感器的设备信息的指针
-   * @param  p      空类型的指针，用来指向子类的地址
+   * @param  p      空类型的指针,用来指向子类的地址
    */
-  DFRobot_SHTXX(uint8_t addr ,TwoWire *pWire ,sDev_t * dev ,void * p);
+  DFRobot_SHTXX(uint8_t addr, TwoWire *pWire, sDev_t * dev, void * p);
   ~DFRobot_SHTXX(){};
 
   /**
@@ -64,13 +64,13 @@ public:
 
   /**
    * @brief  获取温度数据
-   * @return 温度值，单位：摄氏度
+   * @return 温度值,单位：摄氏度
    */
   float getTemperature();
 
   /**
    * @brief  获取湿度数据
-   * @return 湿度值，单位：%RH
+   * @return 湿度值,单位：%RH
    */
   float getHumidity();
 
@@ -79,7 +79,7 @@ public:
    * @param   tem  存放温度数据的引用
    * @param   hum  存放湿度数据的引用
    */
-  void  getTemHum(float &tem ,float &hum);
+  void  getTemHum(float &tem, float &hum);
 
   /**
    * @brief  设置传感器工作模式
@@ -104,7 +104,7 @@ public:
 
   /**
    * @brief  获取传感器的唯一标识符
-   * @return 获取成功返回传感器的唯一标识符，失败返回0
+   * @return 获取成功返回传感器的唯一标识符,失败返回0
    */
    uint32_t getDeviceID();
 
@@ -119,32 +119,32 @@ public:
    * @param  hun   Pointer to the address of the original value of the humidity
    * @return Is the data obtained correct? return true  The data is correct ; return false  The data  is incorrect
    */
-   bool getTandRHRawData(uint16_t *temp ,uint16_t *hum);
+   bool getTandRHRawData(uint16_t *temp, uint16_t *hum);
 
 protected:
   /**
-   * @brief  将从传感器获得的数据进行再次校验比对，判断从传感器获得的数据是否正确
+   * @brief  将从传感器获得的数据进行再次校验比对,判断从传感器获得的数据是否正确
    * @param  data1  High 8 bits to check value
    * @param  data2  LOW 8 bits to check value
    * @param  crcValue  Check value returned by the sensor
    * @return Check success return true ;Check failed return false
    */
-  bool checkCrc(uint8_t data1 ,uint8_t data2 ,uint8_t crcValue);
+  bool checkCrc(uint8_t data1, uint8_t data2, uint8_t crcValue);
 
   /**
    * @brief  对传感器进行写命令操作
    * @param  command  指向命令的指针
    * @param  len      命令长度
    */
-   void writeCommand(uint8_t* command ,uint8_t len);
+   void writeCommand(uint8_t* command, uint8_t len);
 
   /**
    * @brief 读取传感器采集的数据
    * @param pBuf 要写入数据的存放缓存
    * @param size 要写入数据的长度
-   * @return 返回实际读取的长度，返回0表示读取失败
+   * @return 返回实际读取的长度,返回0表示读取失败
    */
-  uint8_t readValue(void* pBuf ,size_t size);
+  uint8_t readValue(void* pBuf, size_t size);
 
 protected:
   TwoWire *_pWire;
@@ -154,8 +154,5 @@ protected:
   uint16_t _mode;
 
 };
-/* 以下头文件用来包含子类的头文件，固定结构，不要删改 */
-#include "DFRobot_SHT40.h"
-#include "DFRobot_SHTC3.h"
 
 #endif

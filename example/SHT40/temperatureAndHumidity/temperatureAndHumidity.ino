@@ -1,8 +1,11 @@
 /*!
  * @file temperatureAndHumidity.ino
  * @brief Measurement of temperature and humidity
- * @n 本系列传感器可测量温湿度数据，温度的测量范围在-40~125 ℃ ，湿度的测量范围在 0~100 %RH。
- * @n 实验现象：不同模式下打印间隔不同，正确情况下输出温湿度数据，设备有错误的情况下，会提示错误信息
+ * @n 本传感器可测量温湿度数据,温度的测量范围在-40~125 ℃ ,湿度的测量范围在 0~100 %RH。
+ * @n 本传感器提供高、中、低,三种测量精度,还提供了高、中、低,三种加热功率对片上加热器进行加热。
+ * @n 使用加热器的主要情景：
+ * @n 1、Removal of condensed / spray water on the sensor surface. Although condensed water is not a reliability / quality problem to the sensor, it will however make the sensor nonresponsive to RH changes in the air as long as there is liquid water on the surface.
+ * @n 2、Creep-free operation in high humid environments. Periodic heating pulses allow for creepSTXfree high-humidity measurements for extended times.
  * @copyright  Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
  * @licence     The MIT License (MIT)
  * @author [yangfeng]<feng.yang@dfrobot.com>
@@ -11,50 +14,34 @@
  * @get from https://www.dfrobot.com
  * @url  https://github.com/DFRobot/DFRobot_SHTXX
  */
+#include"DFRobot_SHT40.h"
 
-#include"DFRobot_SHTXX.h"
-
-//#define SHTC3
-#ifdef SHTC3
-DFRobot_SHTC3 SHTXX;
-#endif
-
-#define SHT40
-#ifdef SHT40
-/** 对于SHT40传感器这里支持两种型号，第一种是SHT40_AD1B ,第二种是SHT40_BD1B，这两种型号对应不同的IIC设备地址，这里对它们进行了封装，用户可传入如下两种参数
- *   型号为SHT40_AD1B的传感器使用:    SHT40_AD1B_IIC_ADDR
- *   型号为SHT40_AD1B的传感器使用:    SHT40_BD1B_IIC_ADDR
+/** 
+ *  对于SHT40传感器这里支持两种型号,第一种是SHT40_AD1B, 第二种是SHT40_BD1B,这两种型号对应不同的IIC设备地址,这里对它们进行了封装,用户可传入如下两种参数
+ *  型号为SHT40_AD1B的传感器使用:    SHT40_AD1B_IIC_ADDR
+ *  型号为SHT40_AD1B的传感器使用:    SHT40_BD1B_IIC_ADDR
  */
-DFRobot_SHT40 SHTXX(SHT40_AD1B_IIC_ADDR); 
-#endif
+DFRobot_SHT40 SHT40(SHT40_AD1B_IIC_ADDR); 
+
 
 uint32_t id = 0;
-float temperature , humidity;
+float temperature, humidity;
 
 void setup() {
+
   Serial.begin(9600);
-  SHTXX.begin();
+  SHT40.begin();
 
-#ifdef SHTC3
-  SHTXX.wakeup();/*SHTC3传感器默认配置为睡眠状态，使用前请对它进行唤醒操作。 使SHTC3 进行睡眠请调用这个方法SHTXX.sleep();在SHTC3传感器进入睡眠状态后，将在被唤醒之前不工作*/
-#endif
-
-  while((id = SHTXX.getDeviceID()) == 0){
+  while((id = SHT40.getDeviceID()) == 0){
     Serial.println("ID retrieval error, please check whether the device is connected correctly!!!");
     delay(1000);
   }
 
   delay(1000);
-
-  Serial.print("id :0x"); Serial.println(id ,HEX);
+  Serial.print("id :0x"); Serial.println(id, HEX);
   /**
    * 
-   *    mode 用来配置传感器的工作模式，不同的传感器有不同的工作模式
-   *          SHTC3：
-   *                  eEnClkStretch                              Clock Stretching Enabled 
-   *                  eDisClkStretch                             Clock Stretching Disabled 
-   *                  eEnClkStretchLowP                          Clock Stretching Enabled & Low Power
-   *                  eDisClkStretchLowP                         Clock Stretching Disabled & Low Power
+   *    mode 用来配置传感器的工作模式
    *          SHT40:
    *                  eHighPrecision                             measure T & RH with high precision (high repeatability) 
    *                  eMediumPrecision                           measure T & RH with medium precision (medium repeatability)
@@ -66,14 +53,14 @@ void setup() {
    *                  eHeaterLowPLongT                           activate lowest heater power  & high precis. meas. (typ. 20mW @ 3.3V) for 1s 
    *                  eHeaterLowPShortT                          activate lowest heater power  & high precis. meas. (typ. 20mW @ 3.3V) for 0.1s 
    */
-  SHTXX.setMode(/*mode = */SHTXX.eHighPrecision);
+  SHT40.setMode(/*mode = */SHT40.eHighPrecision);
 
 }
 
 void loop() {
-  temperature = SHTXX.getTemperature();
+  temperature = SHT40.getTemperature();
 
-  humidity = SHTXX.getHumidity();
+  humidity = SHT40.getHumidity();
 
   //SHTXX.getTemHum(temperature,humidity);
 

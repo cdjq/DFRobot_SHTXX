@@ -47,41 +47,41 @@ public:
   ~DFRobot_SHTC3(){};
   
   /**
-   * @brief  初始化Wire，并且对传感器进行软件复位，然后使传感器进入睡眠状态，需要使用时，在对其进行唤醒。
+   * @brief  初始化Wire,并且对传感器进行软件复位,然后使传感器进入睡眠状态,需要使用时,在对其进行唤醒。
    */
   void begin();
 
 
 
   /**
-   * @brief  当传感器处于睡眠模式时，在进行任何进一步的通信之前，需要唤醒
+   * @brief  当传感器处于睡眠模式时,在进行任何进一步的通信之前,需要唤醒
    */
   void wakeup();
   
   /**
-   * @brief  设置传感器为睡眠模式，设置后，在未唤醒前无法进行数据采集
+   * @brief  设置传感器为睡眠模式,设置后,在未唤醒前无法进行数据采集
    */
   void sleep();
 
 private:
   /**
-   * @brief  父类方法setMode()对应子类的“类回调函数”，这里用作设置延时
-   * @param  ...  可变参数，这里不用任何用途
+   * @brief  父类方法setMode()对应子类的“类回调函数”,这里用作设置延时
+   * @param  ...  可变参数,这里不用任何用途
    */
   static void setModeCB(...);
 
   /**
-   * @brief  父类方法softwareReset()对应子类的“类回调函数”，这里用作设置延时
-   * @param  ...  可变参数，这里不用任何用途
+   * @brief  父类方法softwareReset()对应子类的“类回调函数”,这里用作设置延时
+   * @param  ...  可变参数,这里不用任何用途
    */
   static void softwareResetCB(...);
 
   /**
-   * @brief   父类方法getDeviceIDCB()对应子类的“类回调函数”，这里用作获取传感器的设备ID
+   * @brief   父类方法getDeviceIDCB()对应子类的“类回调函数”,这里用作获取传感器的设备ID
    * @param   classPtr  指向子类的指针
    * @param   id  指向设备ID的指针
    */
-  static void getDeviceIDCB(void * classPtr ,void * id);
+  static void getDeviceIDCB(void * classPtr, void * id);
 
 };
 #endif

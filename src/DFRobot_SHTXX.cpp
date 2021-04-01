@@ -12,7 +12,7 @@
  */
 #include "DFRobot_SHTXX.h"
 
-DFRobot_SHTXX::DFRobot_SHTXX(uint8_t addr ,TwoWire *pWire ,sDev_t * dev ,void *p):
+DFRobot_SHTXX::DFRobot_SHTXX(uint8_t addr, TwoWire *pWire, sDev_t * dev, void *p):
 _pWire(pWire),_deviceAddr(addr),_p(p)
 {
   _dev = dev;
@@ -26,9 +26,9 @@ void DFRobot_SHTXX::begin()
 
 float DFRobot_SHTXX::getTemperature()
 {
-  uint16_t tem , hum;
+  uint16_t tem,  hum;
 
-  while(!getTandRHRawData(&tem ,&hum)){
+  while(!getTandRHRawData(&tem, &hum)){
     DBG("ERR:Checksum error!!!");
     delay(1000);
   }
@@ -39,9 +39,9 @@ float DFRobot_SHTXX::getTemperature()
 
 float DFRobot_SHTXX::getHumidity()
 {
-  uint16_t tem ,hum;
+  uint16_t tem, hum;
 
-  while(!getTandRHRawData(&tem ,&hum)){
+  while(!getTandRHRawData(&tem, &hum)){
     DBG("ERR:Checksum error!!!");
     delay(1000);
   }
@@ -50,11 +50,11 @@ float DFRobot_SHTXX::getHumidity()
   return humidity;
 }
 
-void DFRobot_SHTXX::getTemHum(float &temperature ,float &humidity)
+void DFRobot_SHTXX::getTemHum(float &temperature, float &humidity)
 {
-  uint16_t tem , hum;
+  uint16_t tem,  hum;
 
-  while(!getTandRHRawData(&tem ,&hum)){
+  while(!getTandRHRawData(&tem, &hum)){
     DBG("ERR:Checksum error!!!");
     delay(1000);
   }
@@ -66,13 +66,13 @@ void DFRobot_SHTXX::getTemHum(float &temperature ,float &humidity)
 uint32_t DFRobot_SHTXX::getDeviceID()
 {
   uint32_t id = 0;
-  _dev[SHTXX_CONFIG_ID].fun((void *)_p ,(void *)&id);
+  _dev[SHTXX_CONFIG_ID].fun((void *)_p, (void *)&id);
   return id;
 }
 
 void DFRobot_SHTXX::softwareReset()
 {
-  writeCommand(( uint8_t * )&_dev[SHTXX_CONFIG_SOFT_RESET].addr ,_dev[SHTXX_CONFIG_SOFT_RESET].len);
+  writeCommand(( uint8_t * )&_dev[SHTXX_CONFIG_SOFT_RESET].addr, _dev[SHTXX_CONFIG_SOFT_RESET].len);
   _dev[SHTXX_CONFIG_SOFT_RESET].fun();
 
 }
@@ -81,17 +81,17 @@ void DFRobot_SHTXX::setMode(uint16_t mode){
   _mode = mode;
 }
 
-bool DFRobot_SHTXX::getTandRHRawData(uint16_t* temp ,uint16_t* rh)
+bool DFRobot_SHTXX::getTandRHRawData(uint16_t* temp, uint16_t* rh)
 {
   uint8_t data[6];
-  uint16_t command , time;
+  uint16_t command, time;
   bool ret = false;
 
-  writeCommand(  (uint8_t * )&_mode ,_dev[2].len);
-  _dev[2].fun( ( void * )_p ,(uint16_t)_mode);
-  readValue( ( void* )data ,6);
+  writeCommand(  (uint8_t * )&_mode, _dev[2].len);
+  _dev[2].fun( ( void * )_p, (uint16_t)_mode);
+  readValue( ( void* )data, 6);
 
-  if(checkCrc(data[0] ,data[1] , data[2]) && checkCrc(data[3] ,data[4] ,data[5])){
+  if(checkCrc(data[0], data[1], data[2]) && checkCrc(data[3], data[4], data[5])){
     *temp = ( data[0] << 8 ) | data[1];
     *rh = ( data[3] << 8 ) | data[4];
     ret =  true;
@@ -100,7 +100,7 @@ bool DFRobot_SHTXX::getTandRHRawData(uint16_t* temp ,uint16_t* rh)
   return ret;
 }
 
-void DFRobot_SHTXX:: writeCommand(uint8_t* command ,uint8_t len)
+void DFRobot_SHTXX:: writeCommand(uint8_t* command, uint8_t len)
 {
   _pWire->beginTransmission(_deviceAddr);
 
@@ -111,11 +111,11 @@ void DFRobot_SHTXX:: writeCommand(uint8_t* command ,uint8_t len)
   _pWire->endTransmission();
 }
 
-uint8_t DFRobot_SHTXX::readValue(void* pBuf ,size_t size)
+uint8_t DFRobot_SHTXX::readValue(void* pBuf, size_t size)
 {
   uint8_t * _pBuf = (uint8_t *)pBuf;
 
-  _pWire->requestFrom(_deviceAddr ,(uint8_t)size);
+  _pWire->requestFrom(_deviceAddr, (uint8_t)size);
 
   for(uint16_t i = 0; i < size; i++){
     _pBuf[i] = _pWire->read();
@@ -123,7 +123,7 @@ uint8_t DFRobot_SHTXX::readValue(void* pBuf ,size_t size)
   return size;
 }
 
-bool DFRobot_SHTXX::checkCrc(uint8_t data1 ,uint8_t data2 ,uint8_t crcValue)
+bool DFRobot_SHTXX::checkCrc(uint8_t data1, uint8_t data2, uint8_t crcValue)
 {
   uint8_t crc = 0xFF;
   uint8_t crcData[2];
@@ -136,7 +136,7 @@ bool DFRobot_SHTXX::checkCrc(uint8_t data1 ,uint8_t data2 ,uint8_t crcValue)
     for(uint8_t bit = 8; bit > 0; --bit){
       if(crc & 0x80){
         crc = ( crc << 1 ) ^ 0x31;
-      }else{
+      } else{
         crc = ( crc << 1 );
       }
     }

@@ -46,13 +46,13 @@ To use this library, download the library file first, paste it into the \Arduino
 
   /**
    * @brief  获取温度数据
-   * @return 温度值，单位：摄氏度
+   * @return 温度值,单位：摄氏度
    */
   float getTemperature();
 
   /**
    * @brief  获取湿度数据
-   * @return 湿度值，单位：%RH
+   * @return 湿度值,单位：%RH
    */
   float getHumidity();
 
@@ -61,7 +61,7 @@ To use this library, download the library file first, paste it into the \Arduino
    * @param   tem  存放温度数据的引用
    * @param   hum  存放湿度数据的引用
    */
-  void  getTemHum(float &tem ,float &hum);
+  void  getTemHum(float &tem, float &hum);
 
   /**
    * @brief  设置传感器工作模式
@@ -86,7 +86,7 @@ To use this library, download the library file first, paste it into the \Arduino
 
   /**
    * @brief  获取传感器的唯一标识符
-   * @return 获取成功返回传感器的唯一标识符，失败返回0
+   * @return 获取成功返回传感器的唯一标识符,失败返回0
    */
    uint32_t getDeviceID();
 
@@ -101,26 +101,24 @@ To use this library, download the library file first, paste it into the \Arduino
    * @param  hun   Pointer to the address of the original value of the humidity
    * @return Is the data obtained correct? return true  The data is correct ; return false  The data  is incorrect
    */
-   bool getTandRHRawData(uint16_t *temp ,uint16_t *hum);
+   bool getTandRHRawData(uint16_t *temp, uint16_t *hum);
 ```
 
 ## Methods—DFRobot_SHTC3
 
 ```C++
   /**
-   * @brief  初始化Wire，并且对传感器进行软件复位，然后使传感器进入睡眠状态，需要使用时，在对其进行唤醒。
+   * @brief  初始化Wire,并且对传感器进行软件复位,然后使传感器进入睡眠状态,需要使用时,在对其进行唤醒。
    */
   void begin();
 
-
-
   /**
-   * @brief  当传感器处于睡眠模式时，在进行任何进一步的通信之前，需要唤醒
+   * @brief  当传感器处于睡眠模式时,在进行任何进一步的通信之前,需要唤醒
    */
   void wakeup();
   
   /**
-   * @brief  设置传感器为睡眠模式，设置后，在未唤醒前无法进行数据采集
+   * @brief  设置传感器为睡眠模式,设置后,在未唤醒前无法进行数据采集
    */
   void sleep();
 ```
@@ -129,7 +127,7 @@ To use this library, download the library file first, paste it into the \Arduino
 
 ```C++
   /**
-   * @brief  初始化Wire，并且对传感器进行软件复位
+   * @brief  初始化Wire,并且对传感器进行软件复位
    */
   void begin();
 ```

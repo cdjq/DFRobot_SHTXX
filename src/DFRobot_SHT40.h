@@ -42,33 +42,33 @@ public:
    * @brief  constructed function
    * @param  pWire  When instantiate this class, you can specify its twowire
    */
-  DFRobot_SHT40(uint8_t addr ,TwoWire *pWire = &Wire);
+  DFRobot_SHT40(uint8_t addr, TwoWire *pWire = &Wire);
 
   /**
-   * @brief  初始化Wire，并且对传感器进行软件复位
+   * @brief  初始化Wire,并且对传感器进行软件复位
    */
   void begin();
 
 private:
   /**
-   * @brief  父类方法setMode()对应子类的“类回调函数”，这里用作设置延时
+   * @brief  父类方法setMode()对应子类的“类回调函数”,这里用作设置延时
    * @param   classPtr  指向子类的指针
    * @param   mode  用户指定的设备工作模式
    */
-  static void setModeCB(void * calssPtr ,uint16_t mode);
+  static void setModeCB(void * calssPtr, uint16_t mode);
 
   /**
-   * @brief  父类方法softwareReset()对应子类的“类回调函数”，这里用作设置延时
-   * @param  ...  可变参数，这里不用任何用途
+   * @brief  父类方法softwareReset()对应子类的“类回调函数”,这里用作设置延时
+   * @param  ...  可变参数,这里不用任何用途
    */
   static void softwareResetCB(...);
 
   /**
-   * @brief   父类方法getDeviceIDCB()对应子类的“类回调函数”，这里用作获取传感器的设备ID
+   * @brief   父类方法getDeviceIDCB()对应子类的“类回调函数”,这里用作获取传感器的设备ID
    * @param   classPtr  指向子类的指针
    * @param   id  指向设备ID的指针
    */
-  static void getDeviceIDCB(void * classPtr ,void * id);
+  static void getDeviceIDCB(void * classPtr, void * id);
 
 };
 
