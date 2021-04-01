@@ -81,7 +81,7 @@ private:
    * @param   classPtr  指向子类的指针
    * @param   id  指向设备ID的指针
    */
-  static void getDeviceIDCB(void * classPtr , void * id);
+  static void getDeviceIDCB(void * classPtr ,void * id);
 
 };
 #endif

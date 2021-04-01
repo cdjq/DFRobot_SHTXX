@@ -12,8 +12,8 @@
 
 #include "DFRobot_SHT40.h"
 
-DFRobot_SHT40::DFRobot_SHT40(uint8_t addr , TwoWire *pWire):
-DFRobot_SHTXX(addr , pWire , deviceinit , this)
+DFRobot_SHT40::DFRobot_SHT40(uint8_t addr ,TwoWire *pWire):
+DFRobot_SHTXX(addr ,pWire ,deviceinit ,this)
 {
   deviceinit[SHTXX_CONFIG_ID].addr = SHT40_COM_READ_SERIAL;
   deviceinit[SHTXX_CONFIG_SOFT_RESET].addr = SHT40_COM_SOFT_RESET;
@@ -30,7 +30,7 @@ void DFRobot_SHT40::begin()
   softwareReset();
 }
 
-void DFRobot_SHT40::setModeCB(void * calssPtr , uint16_t mode){
+void DFRobot_SHT40::setModeCB(void * calssPtr ,uint16_t mode){
   uint16_t time;
   DFRobot_SHT40 * temp = (DFRobot_SHT40 *)calssPtr;
 
@@ -74,19 +74,18 @@ void DFRobot_SHT40::softwareResetCB(...)
   delayMicroseconds(1000);
 }
 
-void DFRobot_SHT40::getDeviceIDCB(void * classPtr , void * id)
+void DFRobot_SHT40::getDeviceIDCB(void * classPtr ,void * id)
 {
   DFRobot_SHT40 * temp = (DFRobot_SHT40 *)classPtr;
   uint8_t idArray[6];
 
-  temp->writeCommand((uint8_t *)&temp->deviceinit[SHTXX_CONFIG_ID].addr,temp->deviceinit[SHTXX_CONFIG_ID].len);
+  temp->writeCommand((uint8_t *)&temp->deviceinit[SHTXX_CONFIG_ID].addr ,temp->deviceinit[SHTXX_CONFIG_ID].len);
   delay(8);
-  temp->readValue((void*)idArray,6);
+  temp->readValue((void*)idArray ,6);
 
-  if(temp->checkCrc(idArray[0],idArray[1],idArray[2]) && temp->checkCrc(idArray[3],idArray[4],idArray[5])){
-    *(uint32_t *)id= ((uint32_t)idArray[0]<<24) | ((uint32_t)idArray[1]<<16) | ((uint32_t)idArray[3]<<8) | idArray[4] ;
+  if(temp->checkCrc(idArray[0] ,idArray[1] ,idArray[2]) && temp->checkCrc(idArray[3] ,idArray[4] ,idArray[5])){
+    *(uint32_t *)id= ((uint32_t)idArray[0] << 24) | ((uint32_t)idArray[1] << 16) | ((uint32_t)idArray[3] << 8) | idArray[4];
   } else{
     *(uint32_t *)id = 0;
   }
-
 }

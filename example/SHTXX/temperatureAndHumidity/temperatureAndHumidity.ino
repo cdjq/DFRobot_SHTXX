@@ -38,17 +38,15 @@ void setup() {
 #ifdef SHTC3
   SHTXX.wakeup();/*SHTC3传感器默认配置为睡眠状态，使用前请对它进行唤醒操作。 使SHTC3 进行睡眠请调用这个方法SHTXX.sleep();在SHTC3传感器进入睡眠状态后，将在被唤醒之前不工作*/
 #endif
-  
-                     
 
-  while( ( id = SHTXX.getDeviceID() ) == 0){
+  while((id = SHTXX.getDeviceID()) == 0){
     Serial.println("ID retrieval error, please check whether the device is connected correctly!!!");
     delay(1000);
   }
 
   delay(1000);
 
-  Serial.print("id :0x"); Serial.println(id , HEX);
+  Serial.print("id :0x"); Serial.println(id ,HEX);
   /**
    * 
    *    mode 用来配置传感器的工作模式，不同的传感器有不同的工作模式

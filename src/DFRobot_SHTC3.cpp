@@ -12,7 +12,7 @@
  */
 #include "DFRobot_SHTC3.h"
 DFRobot_SHTC3::DFRobot_SHTC3(TwoWire *pWire):
-DFRobot_SHTXX(SHTC3_IIC_ADDR , pWire , deviceinit , this)
+DFRobot_SHTXX(SHTC3_IIC_ADDR ,pWire ,deviceinit ,this)
 {
   deviceinit[SHTXX_CONFIG_ID].addr = COMMAND_DEVICE_ID;
   deviceinit[SHTXX_CONFIG_SOFT_RESET].addr = COMMAND_SOFTWARE_RESET;
@@ -39,14 +39,14 @@ void DFRobot_SHTC3::softwareResetCB(...)
 void DFRobot_SHTC3::wakeup()
 {
   uint16_t addr = COMMAND_WAKEUP;
-  writeCommand( ( uint8_t * )&addr , 2 );
+  writeCommand((uint8_t *)&addr ,2);
   delayMicroseconds(500);
 }
 
 void DFRobot_SHTC3::sleep()
 { 
   uint16_t addr = COMMAND_SLEEP;
-  writeCommand( ( uint8_t * )&addr , 2 );
+  writeCommand((uint8_t *)&addr , 2);
   delayMicroseconds(230);
 }
 
@@ -55,19 +55,19 @@ void DFRobot_SHTC3::setModeCB(...)
   delayMicroseconds(12000);
 }
 
-void DFRobot_SHTC3::getDeviceIDCB( void * classPtr , void * id )
+void DFRobot_SHTC3::getDeviceIDCB(void * classPtr ,void * id)
 {
-  DFRobot_SHTC3 * temp = ( DFRobot_SHTC3 *)classPtr;
+  DFRobot_SHTC3 * temp = (DFRobot_SHTC3 *)classPtr;
   uint8_t idArray[3];
   uint16_t id1=0;
 
-  temp->writeCommand( (uint8_t *)&temp->deviceinit[SHTXX_CONFIG_ID].addr , temp->deviceinit[SHTXX_CONFIG_ID].len );
+  temp->writeCommand((uint8_t *)&temp->deviceinit[SHTXX_CONFIG_ID].addr ,temp->deviceinit[SHTXX_CONFIG_ID].len);
   delayMicroseconds(12000);
-  temp->readValue( ( void* )idArray , 3 );
+  temp->readValue((void*)idArray ,3);
 
-  if(temp->checkCrc( idArray[0] , idArray[1] , idArray[2]) ){
-    id1 = ( idArray[0] << 8 ) | idArray[1];
-    if( ( id1 & 0x807 )  == 0x807 ){
+  if(temp->checkCrc(idArray[0] ,idArray[1] ,idArray[2])){
+    id1 = (idArray[0] << 8 ) | idArray[1];
+    if((id1 & 0x807) == 0x807){
       *(uint16_t *)id = id1;
     } else{
       *(uint16_t *)id = 0;

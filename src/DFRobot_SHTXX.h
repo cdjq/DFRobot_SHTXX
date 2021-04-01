@@ -54,7 +54,7 @@ public:
    * @param  dev    指向传感器的设备信息的指针
    * @param  p      空类型的指针，用来指向子类的地址
    */
-  DFRobot_SHTXX(uint8_t addr , TwoWire *pWire , sDev_t * dev , void * p);
+  DFRobot_SHTXX(uint8_t addr ,TwoWire *pWire ,sDev_t * dev ,void * p);
   ~DFRobot_SHTXX(){};
 
   /**
@@ -79,7 +79,7 @@ public:
    * @param   tem  存放温度数据的引用
    * @param   hum  存放湿度数据的引用
    */
-  void  getTemHum(float &tem , float &hum);
+  void  getTemHum(float &tem ,float &hum);
 
   /**
    * @brief  设置传感器工作模式
@@ -119,7 +119,7 @@ public:
    * @param  hun   Pointer to the address of the original value of the humidity
    * @return Is the data obtained correct? return true  The data is correct ; return false  The data  is incorrect
    */
-   bool getTandRHRawData(uint16_t *temp , uint16_t *hum);
+   bool getTandRHRawData(uint16_t *temp ,uint16_t *hum);
 
 protected:
   /**
@@ -129,14 +129,14 @@ protected:
    * @param  crcValue  Check value returned by the sensor
    * @return Check success return true ;Check failed return false
    */
-  bool checkCrc(uint8_t data1 , uint8_t data2 , uint8_t crcValue);
+  bool checkCrc(uint8_t data1 ,uint8_t data2 ,uint8_t crcValue);
 
   /**
    * @brief  对传感器进行写命令操作
    * @param  command  指向命令的指针
    * @param  len      命令长度
    */
-   void writeCommand(uint8_t* command , uint8_t len);
+   void writeCommand(uint8_t* command ,uint8_t len);
 
   /**
    * @brief 读取传感器采集的数据
@@ -144,7 +144,7 @@ protected:
    * @param size 要写入数据的长度
    * @return 返回实际读取的长度，返回0表示读取失败
    */
-  uint8_t readValue(void* pBuf , size_t size);
+  uint8_t readValue(void* pBuf ,size_t size);
 
 protected:
   TwoWire *_pWire;
