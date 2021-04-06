@@ -52,7 +52,7 @@ void setup() {
    *                  PRECISION_LOW_HEATER_1S                         activate lowest heater power  & high precis. meas. (typ. 20mW @ 3.3V) for 1s 
    *                  PRECISION_LOW_HEATER_100MS                      activate lowest heater power  & high precis. meas. (typ. 20mW @ 3.3V) for 0.1s 
    */
-  SHT40.setMode(/*mode = */PRECISION_LOW_HEATER_100MS);
+  SHT40.setMode(/*mode = */PRECISION_HIGH_HEATER_OFF);
 
 }
 
