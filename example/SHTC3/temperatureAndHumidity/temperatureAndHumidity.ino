@@ -38,8 +38,8 @@ void setup() {
    *          SHTC3：
    *                  PRECISION_HIGH_CLKSTRETCH_ON                              Clock Stretching Enabled 
    *                  PRECISION_HIGH_CLKSTRETCH_OFF                             Clock Stretching Disabled 
-   *                  PRECISION_LOW_CLKSTRETCH_ON                          Clock Stretching Enabled & Low Power
-   *                  PRECISION_LOW_CLKSTRETCH_OFF                         Clock Stretching Disabled & Low Power
+   *                  PRECISION_LOW_CLKSTRETCH_ON                               Clock Stretching Enabled & Low Power
+   *                  PRECISION_LOW_CLKSTRETCH_OFF                              Clock Stretching Disabled & Low Power
    */
   SHTC3.setMode(/*mode = */PRECISION_HIGH_CLKSTRETCH_ON);
 }
