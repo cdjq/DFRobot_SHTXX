@@ -23,13 +23,10 @@ public:
   #define COMMAND_SOFTWARE_RESET                     0x805D
   #define COMMAND_WAKEUP                             0x3517
   #define COMMAND_DEVICE_ID                          0xEFC8
-
-  typedef enum{ 
-    eEnClkStretch = 0x7CA2,                                   /* Clock Stretching Enabled */
-    eDisClkStretch = 0x7866,                                  /* Clock Stretching Disabled */
-    eEnClkStretchLowP = 0x6458,                              /* Clock Stretching Enabled & Low Power */
-    eDisClkStretchLowP = 0x609C,                             /* Clock Stretching Disabled & Low Power */
-  }eWorkingMode_t;
+  #define PRECISION_HIGH_CLKSTRETCH_ON               0x7CA2
+  #define PRECISION_HIGH_CLKSTRETCH_OFF              0x7866
+  #define PRECISION_LOW_CLKSTRETCH_ON                0x6458
+  #define PRECISION_LOW_CLKSTRETCH_OFF               0x609C
 
   sDev_t deviceinit[SHTXX_CONFIG_MAX];
 

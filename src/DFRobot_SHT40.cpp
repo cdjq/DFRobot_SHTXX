@@ -15,8 +15,8 @@
 DFRobot_SHT40::DFRobot_SHT40(uint8_t addr, TwoWire *pWire):
 DFRobot_SHTXX(addr, pWire, deviceinit, this)
 {
-  deviceinit[SHTXX_CONFIG_ID].addr = SHT40_COM_READ_SERIAL;
-  deviceinit[SHTXX_CONFIG_SOFT_RESET].addr = SHT40_COM_SOFT_RESET;
+  deviceinit[SHTXX_CONFIG_ID].addr = COM_READ_SERIAL;
+  deviceinit[SHTXX_CONFIG_SOFT_RESET].addr = COM_SOFT_RESET;
   deviceinit[SHTXX_CONFIG_MODE].addr = 0;
   deviceinit[SHTXX_CONFIG_ID].len = deviceinit[SHTXX_CONFIG_SOFT_RESET].len = deviceinit[SHTXX_CONFIG_MODE].len = 1;
   deviceinit[SHTXX_CONFIG_ID].fun = (void(*)(...))&DFRobot_SHT40::getDeviceIDCB;
@@ -35,31 +35,31 @@ void DFRobot_SHT40::setModeCB(void * calssPtr, uint16_t mode){
   DFRobot_SHT40 * temp = (DFRobot_SHT40 *)calssPtr;
 
   switch(mode){
-  case temp->eHighPrecision:
+  case PRECISION_HIGH_HEATER_OFF:
     time = 9;
     break;
-  case temp->eMediumPrecision:
+  case PRECISION_MID_HEATER_OFF:
     time = 5;
     break;
-  case temp->eLowPrecision:
+  case PRECISION_LOW_HEATER_OFF:
     time = 2;
     break;
-  case temp->eHeaterHighPLongT:
+  case PRECISION_HIGH_HEATER_1S:
     time = 1200;
     break;
-  case temp->eHeaterHighPShortT:
+  case PRECISION_HIGH_HEATER_100MS:
     time = 110;
     break;
-  case temp->eHeaterMediumPLongT:
+  case PRECISION_MID_HEATER_1S:
     time = 1100;
     break;
-  case temp->eHeaterMediumPShortT:
+  case PRECISION_MID_HEATER_100MS:
     time = 110;
     break;
-  case temp->eHeaterLowPLongT:
+  case PRECISION_LOW_HEATER_1S:
     time = 1100;
     break;
-  case temp->eHeaterLowPShortT:
+  case PRECISION_LOW_HEATER_100MS:
     time = 110;
     break;
   default :

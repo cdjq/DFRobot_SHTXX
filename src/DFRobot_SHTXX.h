@@ -85,20 +85,20 @@ public:
    * @brief  设置传感器工作模式
    * @param  mode  传感器的工作模式
    * @n            SHTC3：
-   * @n                    eEnClkStretch                              Clock Stretching Enabled 
-   * @n                    eDisClkStretch                             Clock Stretching Disabled 
-   * @n                    eEnClkStretchLowP                          Clock Stretching Enabled & Low Power
-   * @n                    eDisClkStretchLowP                         Clock Stretching Disabled & Low Power
+   * @n                    PRECISION_HIGH_CLKSTRETCH_ON                              Clock Stretching Enabled 
+   * @n                    PRECISION_HIGH_CLKSTRETCH_OFF                             Clock Stretching Disabled 
+   * @n                    PRECISION_LOW_CLKSTRETCH_ON                               Clock Stretching Enabled & Low Power
+   * @n                    PRECISION_LOW_CLKSTRETCH_OFF                              Clock Stretching Disabled & Low Power
    * @n            SHT40:
-   * @n                    eHighPrecision                             measure T & RH with high precision (high repeatability) 
-   * @n                    eMediumPrecision                           measure T & RH with medium precision (medium repeatability)
-   * @n                    eLowPrecision                              measure T & RH with lowest precision (low repeatability) 
-   * @n                    eHeaterHighPLongT                          activate highest heater power & high precis. meas. (typ. 200mW @ 3.3V) for 1s 
-   * @n                    eHeaterHighPShortT                         activate highest heater power & high precis. meas. (typ. 200mW @ 3.3V) for 0.1s
-   * @n                    eHeaterMediumPLongT                        activate medium heater power  & high precis. meas. (typ. 110mW @ 3.3V) for 1s 
-   * @n                    eHeaterMediumPShortT                       activate medium heater power  & high precis. meas. (typ. 110mW @ 3.3V) for 0.1s 
-   * @n                    eHeaterLowPLongT                           activate lowest heater power  & high precis. meas. (typ. 20mW @ 3.3V) for 1s 
-   * @n                    eHeaterLowPShortT                          activate lowest heater power  & high precis. meas. (typ. 20mW @ 3.3V) for 0.1s 
+   * @n                    PRECISION_HIGH_HEATER_OFF                       measure T & RH with high precision (high repeatability) 
+   * @n                    PRECISION_MID_HEATER_OFF                        measure T & RH with medium precision (medium repeatability)
+   * @n                    PRECISION_LOW_HEATER_OFF                        measure T & RH with lowest precision (low repeatability) 
+   * @n                    PRECISION_HIGH_HEATER_1S                        activate highest heater power & high precis. meas. (typ. 200mW @ 3.3V) for 1s 
+   * @n                    PRECISION_HIGH_HEATER_100MS                     activate highest heater power & high precis. meas. (typ. 200mW @ 3.3V) for 0.1s
+   * @n                    PRECISION_MID_HEATER_1S                         activate medium heater power  & high precis. meas. (typ. 110mW @ 3.3V) for 1s 
+   * @n                    PRECISION_MID_HEATER_100MS                      activate medium heater power  & high precis. meas. (typ. 110mW @ 3.3V) for 0.1s 
+   * @n                    PRECISION_LOW_HEATER_1S                         activate lowest heater power  & high precis. meas. (typ. 20mW @ 3.3V) for 1s 
+   * @n                    PRECISION_LOW_HEATER_100MS                      activate lowest heater power  & high precis. meas. (typ. 20mW @ 3.3V) for 0.1s 
    */
    void setMode(uint16_t mode) ;
 

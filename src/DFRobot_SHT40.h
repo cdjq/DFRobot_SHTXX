@@ -12,6 +12,7 @@
 #ifndef __DFROBOT_SHT40_H__
 #define __DFROBOT_SHT40_H__
 
+
 #include"DFRobot_SHTXX.h"
 class DFRobot_SHT40:public DFRobot_SHTXX{
 public:
@@ -19,23 +20,19 @@ public:
   #define  SHT40_AD1B_IIC_ADDR                     0x44
   #define  SHT40_BD1B_IIC_ADDR                     0x45
 
-  #define  SHT40_COM_READ_SERIAL                   0x89
-  #define  SHT40_COM_SOFT_RESET                    0x94
+  #define  COM_READ_SERIAL                   0x89
+  #define  COM_SOFT_RESET                    0x94
 
-  typedef enum{
-    eHighPrecision = 0xFD,                          /* measure T & RH with high precision (high repeatability) */
-    eMediumPrecision = 0xF6,                           /* measure T & RH with medium precision (medium repeatability) */
-    eLowPrecision = 0xE0,                              /* measure T & RH with lowest precision (low repeatability) */
-    eHeaterHighPLongT = 0x39,                          /* activate highest heater power & high precis. meas. (typ. 200mW @ 3.3V) for 1s */
-    eHeaterHighPShortT = 0x32,                         /* activate highest heater power & high precis. meas. (typ. 200mW @ 3.3V) for 0.1s */
-    eHeaterMediumPLongT = 0x2F,                        /* activate medium heater power  & high precis. meas. (typ. 110mW @ 3.3V) for 1s */
-    eHeaterMediumPShortT = 0x24,                       /* activate medium heater power  & high precis. meas. (typ. 110mW @ 3.3V) for 0.1s */
-    eHeaterLowPLongT = 0x1E,                           /* activate lowest heater power  & high precis. meas. (typ. 20mW @ 3.3V) for 1s */
-    eHeaterLowPShortT = 0x15                           /* activate lowest heater power  & high precis. meas. (typ. 20mW @ 3.3V) for 0.1s */
-  }eWorkingMode_t;
-  
+  #define  PRECISION_HIGH_HEATER_OFF                   0xFD              /* measure T & RH with high precision (high repeatability) */
+  #define  PRECISION_MID_HEATER_OFF                    0xF6              /* measure T & RH with medium precision (medium repeatability) */
+  #define  PRECISION_LOW_HEATER_OFF                    0xE0              /* measure T & RH with lowest precision (low repeatability) */
+  #define  PRECISION_HIGH_HEATER_1S                    0x39               /* activate highest heater power & high precis. meas. (typ. 200mW @ 3.3V) for 1s */
+  #define  PRECISION_HIGH_HEATER_100MS                 0x32               /* activate highest heater power & high precis. meas. (typ. 200mW @ 3.3V) for 0.1s */
+  #define  PRECISION_MID_HEATER_1S                     0x2F               /* activate medium heater power  & high precis. meas. (typ. 110mW @ 3.3V) for 1s */
+  #define  PRECISION_MID_HEATER_100MS                  0x24               /* activate medium heater power  & high precis. meas. (typ. 110mW @ 3.3V) for 0.1s */
+  #define  PRECISION_LOW_HEATER_1S                     0x1E               /* activate lowest heater power  & high precis. meas. (typ. 20mW @ 3.3V) for 1s */
+  #define  PRECISION_LOW_HEATER_100MS                  0x15               /* activate lowest heater power  & high precis. meas. (typ. 20mW @ 3.3V) for 0.1s */
   sDev_t deviceinit[SHTXX_CONFIG_MAX];
-
 public:
 
   /**

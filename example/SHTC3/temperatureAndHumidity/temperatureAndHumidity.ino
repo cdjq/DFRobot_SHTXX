@@ -36,13 +36,12 @@ void setup() {
    * 
    *    mode 用来配置传感器的工作模式,不同的传感器有不同的工作模式
    *          SHTC3：
-   *                  eEnClkStretch                              Clock Stretching Enabled 
-   *                  eDisClkStretch                             Clock Stretching Disabled 
-   *                  eEnClkStretchLowP                          Clock Stretching Enabled & Low Power
-   *                  eDisClkStretchLowP                         Clock Stretching Disabled & Low Power
+   *                  PRECISION_HIGH_CLKSTRETCH_ON                              Clock Stretching Enabled 
+   *                  PRECISION_HIGH_CLKSTRETCH_OFF                             Clock Stretching Disabled 
+   *                  PRECISION_LOW_CLKSTRETCH_ON                          Clock Stretching Enabled & Low Power
+   *                  PRECISION_LOW_CLKSTRETCH_OFF                         Clock Stretching Disabled & Low Power
    */
-  SHTC3.setMode(/*mode = */SHTC3.eEnClkStretch);
-
+  SHTC3.setMode(/*mode = */PRECISION_HIGH_CLKSTRETCH_ON);
 }
 
 void loop() {

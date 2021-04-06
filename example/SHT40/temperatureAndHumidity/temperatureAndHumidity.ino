@@ -40,20 +40,19 @@ void setup() {
   delay(1000);
   Serial.print("id :0x"); Serial.println(id, HEX);
   /**
-   * 
    *    mode 用来配置传感器的工作模式
    *          SHT40:
-   *                  eHighPrecision                             measure T & RH with high precision (high repeatability) 
-   *                  eMediumPrecision                           measure T & RH with medium precision (medium repeatability)
-   *                  eLowPrecision                              measure T & RH with lowest precision (low repeatability) 
-   *                  eHeaterHighPLongT                          activate highest heater power & high precis. meas. (typ. 200mW @ 3.3V) for 1s 
-   *                  eHeaterHighPShortT                         activate highest heater power & high precis. meas. (typ. 200mW @ 3.3V) for 0.1s
-   *                  eHeaterMediumPLongT                        activate medium heater power  & high precis. meas. (typ. 110mW @ 3.3V) for 1s 
-   *                  eHeaterMediumPShortT                       activate medium heater power  & high precis. meas. (typ. 110mW @ 3.3V) for 0.1s 
-   *                  eHeaterLowPLongT                           activate lowest heater power  & high precis. meas. (typ. 20mW @ 3.3V) for 1s 
-   *                  eHeaterLowPShortT                          activate lowest heater power  & high precis. meas. (typ. 20mW @ 3.3V) for 0.1s 
+   *                  PRECISION_HIGH_HEATER_OFF                       measure T & RH with high precision (high repeatability) 
+   *                  PRECISION_MID_HEATER_OFF                        measure T & RH with medium precision (medium repeatability)
+   *                  PRECISION_LOW_HEATER_OFF                        measure T & RH with lowest precision (low repeatability) 
+   *                  PRECISION_HIGH_HEATER_1S                        activate highest heater power & high precis. meas. (typ. 200mW @ 3.3V) for 1s 
+   *                  PRECISION_HIGH_HEATER_100MS                     activate highest heater power & high precis. meas. (typ. 200mW @ 3.3V) for 0.1s
+   *                  PRECISION_MID_HEATER_1S                         activate medium heater power  & high precis. meas. (typ. 110mW @ 3.3V) for 1s 
+   *                  PRECISION_MID_HEATER_100MS                      activate medium heater power  & high precis. meas. (typ. 110mW @ 3.3V) for 0.1s 
+   *                  PRECISION_LOW_HEATER_1S                         activate lowest heater power  & high precis. meas. (typ. 20mW @ 3.3V) for 1s 
+   *                  PRECISION_LOW_HEATER_100MS                      activate lowest heater power  & high precis. meas. (typ. 20mW @ 3.3V) for 0.1s 
    */
-  SHT40.setMode(/*mode = */SHT40.eHighPrecision);
+  SHT40.setMode(/*mode = */PRECISION_LOW_HEATER_100MS);
 
 }
 
