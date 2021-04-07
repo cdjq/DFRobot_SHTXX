@@ -26,12 +26,12 @@ public:
   #define  PRECISION_HIGH_HEATER_OFF                   0xFD               /* measure T & RH with high precision (high repeatability) */
   #define  PRECISION_MID_HEATER_OFF                    0xF6               /* measure T & RH with medium precision (medium repeatability) */
   #define  PRECISION_LOW_HEATER_OFF                    0xE0               /* measure T & RH with lowest precision (low repeatability) */
-  #define  PRECISION_HIGH_HEATER_1S                    0x39               /* activate highest heater power & high precis. meas. (typ. 200mW @ 3.3V) for 1s */
-  #define  PRECISION_HIGH_HEATER_100MS                 0x32               /* activate highest heater power & high precis. meas. (typ. 200mW @ 3.3V) for 0.1s */
-  #define  PRECISION_MID_HEATER_1S                     0x2F               /* activate medium heater power  & high precis. meas. (typ. 110mW @ 3.3V) for 1s */
-  #define  PRECISION_MID_HEATER_100MS                  0x24               /* activate medium heater power  & high precis. meas. (typ. 110mW @ 3.3V) for 0.1s */
-  #define  PRECISION_LOW_HEATER_1S                     0x1E               /* activate lowest heater power  & high precis. meas. (typ. 20mW @ 3.3V) for 1s */
-  #define  PRECISION_LOW_HEATER_100MS                  0x15               /* activate lowest heater power  & high precis. meas. (typ. 20mW @ 3.3V) for 0.1s */
+  #define  PRECISION_HIGH_HEATER_1S                    0x39               /* activate highest heater power & high precis. meas. for 1s */
+  #define  PRECISION_HIGH_HEATER_100MS                 0x32               /* activate highest heater power & high precis. meas. for 0.1s */
+  #define  PRECISION_MID_HEATER_1S                     0x2F               /* activate medium heater power  & high precis. meas. for 1s */
+  #define  PRECISION_MID_HEATER_100MS                  0x24               /* activate medium heater power  & high precis. meas. for 0.1s */
+  #define  PRECISION_LOW_HEATER_1S                     0x1E               /* activate lowest heater power  & high precis. meas. for 1s */
+  #define  PRECISION_LOW_HEATER_100MS                  0x15               /* activate lowest heater power  & high precis. meas. for 0.1s */
   sDev_t deviceinit[SHTXX_CONFIG_MAX];
 public:
 
