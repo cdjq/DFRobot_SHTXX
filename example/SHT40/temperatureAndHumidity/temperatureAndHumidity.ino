@@ -45,12 +45,12 @@ void setup() {
    *                  PRECISION_HIGH_HEATER_OFF                       measure T & RH with high precision (high repeatability) 
    *                  PRECISION_MID_HEATER_OFF                        measure T & RH with medium precision (medium repeatability)
    *                  PRECISION_LOW_HEATER_OFF                        measure T & RH with lowest precision (low repeatability) 
-   *                  PRECISION_HIGH_HEATER_1S                        activate highest heater power & high precis. meas. (typ. 200mW @ 3.3V) for 1s 
-   *                  PRECISION_HIGH_HEATER_100MS                     activate highest heater power & high precis. meas. (typ. 200mW @ 3.3V) for 0.1s
-   *                  PRECISION_MID_HEATER_1S                         activate medium heater power  & high precis. meas. (typ. 110mW @ 3.3V) for 1s 
-   *                  PRECISION_MID_HEATER_100MS                      activate medium heater power  & high precis. meas. (typ. 110mW @ 3.3V) for 0.1s 
-   *                  PRECISION_LOW_HEATER_1S                         activate lowest heater power  & high precis. meas. (typ. 20mW @ 3.3V) for 1s 
-   *                  PRECISION_LOW_HEATER_100MS                      activate lowest heater power  & high precis. meas. (typ. 20mW @ 3.3V) for 0.1s 
+   *                  PRECISION_HIGH_HEATER_1S                        activate highest heater power & high precis. meas. for 1s 
+   *                  PRECISION_HIGH_HEATER_100MS                     activate highest heater power & high precis. meas. for 0.1s
+   *                  PRECISION_MID_HEATER_1S                         activate medium heater power  & high precis. meas. for 1s 
+   *                  PRECISION_MID_HEATER_100MS                      activate medium heater power  & high precis. meas. for 0.1s 
+   *                  PRECISION_LOW_HEATER_1S                         activate lowest heater power  & high precis. meas. for 1s 
+   *                  PRECISION_LOW_HEATER_100MS                      activate lowest heater power  & high precis. meas. for 0.1s 
    */
   SHT40.setMode(/*mode = */PRECISION_HIGH_HEATER_OFF);
 
