@@ -1,4 +1,4 @@
-# DFRobot_SHTXX
+# DFRobot_SHT
 
 ## DFRobot_SHTC3
 
@@ -36,7 +36,7 @@ Measurement of temperature and humidity
 
 To use this library, download the library file first, paste it into the \Arduino\libraries directory, then open the examples folder and run the demo in the folder.
 
-## Methods—DFRobot_SHTXX
+## Methods—DFRobot_SHT
 
 ```C++
   /**
