@@ -5,7 +5,7 @@
 #######################################
 # Datatypes (KEYWORD1)
 #######################################
-DFRobot_SHTXX	KEYWORD1
+DFRobot_SHT	KEYWORD1
 DFRobot_SHTC3	KEYWORD1
 DFRobot_SHT40	KEYWORD1
 
