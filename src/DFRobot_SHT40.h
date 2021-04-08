@@ -13,7 +13,7 @@
 #define __DFROBOT_SHT40_H__
 
 
-#include"DFRobot_SHTXX.h"
+#include"DFRobot_SHT.h"
 class DFRobot_SHT40:public DFRobot_SHTXX{
 public:
 
